@@ -13,7 +13,6 @@ class ArrayItTest {
         );
         boolean rsl = it.hasNext();
         assertThat(rsl).isTrue();
-        assertThat(it.hasNext()).isTrue();
     }
 
     @Test
