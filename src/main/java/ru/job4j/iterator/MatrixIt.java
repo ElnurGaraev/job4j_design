@@ -10,7 +10,6 @@ public class MatrixIt implements Iterator<Integer> {
     private int column = 0;
 
     public MatrixIt(int[][] data) {
-
         this.data = data;
     }
 
