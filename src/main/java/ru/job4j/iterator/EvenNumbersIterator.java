@@ -26,4 +26,5 @@ public class EvenNumbersIterator implements Iterator<Integer> {
         }
         return data[index++];
     }
+
 }
