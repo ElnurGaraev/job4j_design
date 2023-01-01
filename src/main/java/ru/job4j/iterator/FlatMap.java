@@ -14,6 +14,7 @@ public class FlatMap<T> implements Iterator<T> {
 
     @Override
     public boolean hasNext() {
+
         return false;
     }
 
@@ -29,6 +30,6 @@ public class FlatMap<T> implements Iterator<T> {
                 List.of(7, 8, 9).iterator()
         ).iterator();
         FlatMap flat = new FlatMap(data);
-        
+
     }
 }
