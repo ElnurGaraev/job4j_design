@@ -42,6 +42,8 @@ public class ForwardLinked<T> implements LinkedList<T> {
         if (head != null) {
             head = head.next;
         }
+        size--;
+        modCount++;
         return rsl;
     }
 
