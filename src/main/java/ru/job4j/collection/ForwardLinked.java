@@ -38,13 +38,16 @@ public class ForwardLinked<T> implements LinkedList<T> {
         if (head == null) {
             throw new NoSuchElementException();
         }
-        T rsl = head.item;
+        Node<T> del = head;
+        T result = head.item;
         if (head != null) {
-            head = head.next;
+            head = del.next;
+            del.next = null;
+            del.item = null;
         }
         size--;
         modCount++;
-        return rsl;
+        return result;
     }
 
     @Override
