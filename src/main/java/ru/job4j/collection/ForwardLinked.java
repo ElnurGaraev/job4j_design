@@ -40,11 +40,9 @@ public class ForwardLinked<T> implements LinkedList<T> {
         }
         Node<T> del = head;
         T result = head.item;
-        if (head != null) {
-            head = del.next;
-            del.next = null;
-            del.item = null;
-        }
+        head = del.next;
+        del.next = null;
+        del.item = null;
         size--;
         modCount++;
         return result;
