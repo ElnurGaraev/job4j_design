@@ -34,6 +34,23 @@ public class ForwardLinked<T> implements LinkedList<T> {
         return target.item;
     }
 
+    public boolean revert() {
+        boolean rsl = true;
+        if (size == 0 || size == 1) {
+            return false;
+        }
+        Node<T> current = head;
+        Node<T> prev = null;
+        while (current != null) {
+            Node<T> next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        head = prev;
+        return rsl;
+    }
+
     public T deleteFirst() {
         if (head == null) {
             throw new NoSuchElementException();
