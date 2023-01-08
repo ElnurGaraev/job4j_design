@@ -35,19 +35,19 @@ public class ForwardLinked<T> implements LinkedList<T> {
     }
 
     public boolean revert() {
-        boolean rsl = true;
-        if (size == 0 || size == 1) {
-            return false;
+        boolean rsl = false;
+        if (size != 0 && size != 1) {
+            Node<T> current = head;
+            Node<T> prev = null;
+            while (current != null) {
+                Node<T> next = current.next;
+                current.next = prev;
+                prev = current;
+                current = next;
+            }
+            head = prev;
+            rsl = true;
         }
-        Node<T> current = head;
-        Node<T> prev = null;
-        while (current != null) {
-            Node<T> next = current.next;
-            current.next = prev;
-            prev = current;
-            current = next;
-        }
-        head = prev;
         return rsl;
     }
 
