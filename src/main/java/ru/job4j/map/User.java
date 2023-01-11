@@ -51,4 +51,5 @@ public class User {
         System.out.printf("user2 - хэшкод:  %s, хэш: %s, бакет: %s",
                 hashCode2, hash2, bucket2);
     }
+
 }
