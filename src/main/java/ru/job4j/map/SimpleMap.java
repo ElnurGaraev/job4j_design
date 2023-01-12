@@ -51,12 +51,9 @@ public class SimpleMap<K, V> implements Map<K, V> {
 
     @Override
     public V get(K key) {
-        int index = getIndex(key);
         V rsl = null;
-        MapEntry<K, V> mapEntry = table[index];
-        if (Objects.nonNull(mapEntry) && Objects.hashCode(mapEntry.key)
-                == Objects.hashCode(key) && Objects.equals(mapEntry.key, key)) {
-            rsl = mapEntry.value;
+        if (checkElement(key)) {
+            rsl = table[getIndex(key)].value;
         }
         return rsl;
     }
@@ -64,16 +61,18 @@ public class SimpleMap<K, V> implements Map<K, V> {
     @Override
     public boolean remove(K key) {
         boolean rsl = false;
-        int index = getIndex(key);
-        MapEntry<K, V> mapEntry = table[index];
-        if (Objects.nonNull(mapEntry) && Objects.hashCode(key)
-                == Objects.hashCode(mapEntry.key)) {
-            table[index] = null;
+        if (checkElement(key)) {
+            table[getIndex(key)] = null;
             rsl = true;
             count--;
             modCount++;
         }
         return rsl;
+    }
+
+    private boolean checkElement(K key) {
+        return Objects.nonNull(table[getIndex(key)]) && Objects.hashCode(key)
+                == Objects.hashCode(table[getIndex(key)].key) && Objects.equals(table[getIndex(key)].key, key);
     }
 
     @Override
