@@ -17,7 +17,7 @@ public class SimpleTree<E> implements Tree<E> {
         boolean rsl = false;
         Optional<Node<E>> paren = findBy(parent);
         Optional<Node<E>> chil = findBy(child);
-        if (paren.isPresent() && !chil.isPresent()) {
+        if (paren.isPresent() && chil.isEmpty()) {
             Node<E> val = new Node<>(child);
             root.children.add(val);
             rsl = true;
