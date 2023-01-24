@@ -20,7 +20,7 @@ public class Analysis {
                 if (time == null && (line.contains("400") || line.contains("500"))) {
                     time = str[1];
                 } else if (time != null && (line.contains("200") || line.contains("300"))) {
-                    out.write(time + System.lineSeparator() + str[1]);
+                    out.write(time + " " + str[1]);
                     out.write(System.lineSeparator());
                     time = null;
                 }
