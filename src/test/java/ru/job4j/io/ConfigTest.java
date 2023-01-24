@@ -15,7 +15,7 @@ class ConfigTest {
 
     @Test
     void whenWithCommentAndEmptyLine() {
-        String path = "./data/pair_with_empty_line.properties";
+        String path = "./data/pair_with_comment_empty_line.properties";
         Config config = new Config(path);
         config.load();
         assertThat(config.value("name")).isEqualTo("Petr");
@@ -23,10 +23,34 @@ class ConfigTest {
     }
 
     @Test
-    void whenThrowException() {
-        String path = "./data/exception.properties";
+    void whenWithoutValueThrowException() {
+        String path = "./data/without_value.properties";
         Config config = new Config(path);
         assertThatThrownBy(config::load)
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void whenWithoutKeyThrowException() {
+        String path = "./data/without_key.properties";
+        Config config = new Config(path);
+        assertThatThrownBy(config::load)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void whenWithoutKeyAndValueThrowException() {
+        String path = "./data/without_key_and_value.properties";
+        Config config = new Config(path);
+        assertThatThrownBy(config::load)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void whenWithoutComments() {
+        String path = "./data/without_comments.properties";
+        Config config = new Config(path);
+        config.load();
+        assertThat(config.value("name")).isEqualTo("Petr=1");
     }
 }
