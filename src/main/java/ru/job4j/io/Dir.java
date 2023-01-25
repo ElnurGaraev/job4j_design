@@ -11,9 +11,8 @@ public class Dir {
         if (!file.isDirectory()) {
             throw new IllegalArgumentException(String.format("Not directory %s", file.getAbsoluteFile()));
         }
-        System.out.println(String.format("length : %s", file.length()));
         for (File subfile  : file.listFiles()) {
-            System.out.println(subfile.getName());
+            System.out.println(String.format("name :  %s, длина  %s", subfile.getName(), subfile.length()));
         }
     }
 }
