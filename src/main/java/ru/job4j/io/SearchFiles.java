@@ -30,8 +30,8 @@ public class SearchFiles implements FileVisitor<Path> {
 
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-        if (this.condition.test(file)) {
-            getPaths().add(file);
+        if (condition.test(file)) {
+            paths.add(file);
         }
         return CONTINUE;
     }
