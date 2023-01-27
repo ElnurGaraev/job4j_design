@@ -17,7 +17,7 @@ public class Search {
 
     public  void validate(String[] args) {
         if (args.length == 0) {
-            throw new IllegalArgumentException("Root folder is null. Usage  ROOT_FOLDER.");
+            throw new IllegalArgumentException("Root folder is null.Usage  ROOT_FOLDER.");
         }
     }
 
