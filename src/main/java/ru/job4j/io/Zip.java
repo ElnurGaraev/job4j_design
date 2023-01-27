@@ -39,7 +39,7 @@ public class Zip {
         Zip zip = new Zip();
         ArgsName arg = ArgsName.of(args);
         Path source = Paths.get(arg.get("d"));
-        List<Path> list = Search.search(source, p -> !p.toFile().getName().contains(".java"));
+        List<Path> list = Search.search(source, p -> !p.toFile().getName().contains(arg.get("e")));
         List<File> files = new ArrayList<>();
         for (Path path : list) {
             files.add(path.toFile());
