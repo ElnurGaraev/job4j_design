@@ -39,14 +39,9 @@ public class Zip {
         if (args.length == 0) {
             throw new IllegalArgumentException("Argument is absent");
         }
-        if (!(args[0].contains("=") && args[0].contains("-"))) {
-            throw new IllegalArgumentException(("Symbol in the first argument is not correct"));
-        }
-        if (!(args[1].contains("=") && args[1].contains("-"))) {
-            throw new IllegalArgumentException(("Symbol in the second argument is not correct"));
-        }
-        if (!(args[2].contains("=") && args[2].contains("-"))) {
-            throw new IllegalArgumentException(("Symbol in the third argument is not correct"));
+        ArgsName arg = ArgsName.of(args);
+        if (!new File(arg.get("d")).isDirectory()) {
+            throw new IllegalArgumentException(("Directory is not correct"));
         }
     }
 
