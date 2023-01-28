@@ -35,8 +35,7 @@ public class Zip {
         }
     }
 
-    private static void validate(String[] args) {
-        ArgsName arg = new ArgsName();
+    private static void validate(ArgsName arg) {
         if (!new File(arg.get("d")).isDirectory()) {
             throw new IllegalArgumentException(("Directory is not correct."));
         }
@@ -49,12 +48,12 @@ public class Zip {
     }
 
     public static void main(String[] args) throws IOException {
-        if (args.length == 0) {
+        if (args.length == 3) {
             throw new IllegalArgumentException("Argument is absent");
         }
         Zip zip = new Zip();
-        validate(args);
         ArgsName arg = ArgsName.of(args);
+        validate(arg);
         Path source = Paths.get(arg.get("d"));
         List<Path> list = Search.search(source, p -> !p.toFile().getName().endsWith(arg.get("e")));
         zip.packSingleFile(
