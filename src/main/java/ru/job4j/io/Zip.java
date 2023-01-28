@@ -35,17 +35,23 @@ public class Zip {
         }
     }
 
-    public static void validate(String[] args) {
-        if (args.length == 0) {
-            throw new IllegalArgumentException("Argument is absent");
-        }
-        ArgsName arg = ArgsName.of(args);
+    private static void validate(String[] args) {
+        ArgsName arg = new ArgsName();
         if (!new File(arg.get("d")).isDirectory()) {
-            throw new IllegalArgumentException(("Directory is not correct"));
+            throw new IllegalArgumentException(("Directory is not correct."));
+        }
+        if (!(arg.get("e").length() > 1) || !arg.get("e").startsWith(".")) {
+            throw new IllegalArgumentException(("Extension is not correct."));
+        }
+        if (!arg.get("o").endsWith("zip")) {
+            throw new IllegalArgumentException(("This is not zip file."));
         }
     }
 
     public static void main(String[] args) throws IOException {
+        if (args.length == 0) {
+            throw new IllegalArgumentException("Argument is absent");
+        }
         Zip zip = new Zip();
         validate(args);
         ArgsName arg = ArgsName.of(args);
