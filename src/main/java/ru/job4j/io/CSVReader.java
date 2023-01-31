@@ -38,27 +38,39 @@ public class CSVReader {
             }
             result.add(String.valueOf(join));
         }
-        try (FileWriter fileWriter = new FileWriter(argsName.get("out"))) {
-            for (String s : result) {
-                fileWriter.write(s + System.lineSeparator());
+        if (!"stdout".equals(argsName.get("out"))) {
+            try (FileWriter fileWriter = new FileWriter(argsName.get("out"))) {
+                for (String s : result) {
+                    fileWriter.write(s + System.lineSeparator());
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } else if ("stdout".equals(argsName.get("out"))) {
+            for (String s : result) {
+                System.out.println(s);
+            }
         }
     }
 
     public static void validate(ArgsName argsName) {
-        if (argsName.get("path") == null) {
+        if (new File(argsName.get("path")).isDirectory()) {
             throw new IllegalArgumentException("Source file is not fined");
         }
-        if (argsName.get("out") == null) {
-            throw new IllegalArgumentException("Target file is not fined");
+        if (argsName.get("out").length() == 0) {
+            throw new IllegalArgumentException("Out argument is not fined");
+        }
+        if (argsName.get("delimiter").length() == 0) {
+            throw new IllegalArgumentException("Delimiter argument is not fined");
+        }
+        if (argsName.get("filter").length() == 0) {
+            throw new IllegalArgumentException("Filter is not fined");
         }
     }
 
     public static void main(String[] args) throws IOException {
         ArgsName argsName = ArgsName.of(args);
-        CSVReader.validate(argsName);
-        CSVReader.handle(argsName);
+        validate(argsName);
+        handle(argsName);
     }
 }
