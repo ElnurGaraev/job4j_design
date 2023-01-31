@@ -54,13 +54,13 @@ public class CSVReader {
     }
 
     public static void validate(ArgsName argsName) {
-        if (new File(argsName.get("path")).isDirectory()) {
-            throw new IllegalArgumentException("Source file is not fined");
+        if (!argsName.get("path").endsWith(".csv")) {
+            throw new IllegalArgumentException("File file is not correct");
         }
-        if (argsName.get("out").length() == 0) {
-            throw new IllegalArgumentException("Out argument is not fined");
+        if (!"stdout".equals(argsName.get("out")) && !argsName.get("out").endsWith(".csv")) {
+            throw new IllegalArgumentException("Out argument is not correct");
         }
-        if (argsName.get("delimiter").length() == 0) {
+        if (!";".equals(argsName.get("delimiter")) && !",".equals(argsName.get("delimiter"))) {
             throw new IllegalArgumentException("Delimiter argument is not fined");
         }
         if (argsName.get("filter").length() == 0) {
