@@ -8,10 +8,16 @@ public class UsageLog4j {
     private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j.class.getName());
 
     public static void main(String[] args) {
-        LOG.trace("trace message");
-        LOG.debug("debug message");
-        LOG.info("info message");
-        LOG.warn("warn message");
-        LOG.error("error message");
+        String model = "Mercedes";
+        byte month = 01;
+        int year = 2019;
+        char carClass = 'E';
+        long  kilometre = 200000L;
+        boolean accident = false;
+        float width = 1.86F;
+        double length = 2.94;
+        LOG.debug("Car info model : {}, month : {}, year : {},  carClass : {}", model, month, year, carClass);
+        LOG.error("Car characteristic width : {}, length : {}, kilometre : {}, accident : {}",
+                width, length, kilometre, accident);
     }
 }
