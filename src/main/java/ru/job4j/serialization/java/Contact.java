@@ -31,19 +31,19 @@ public class Contact implements Serializable {
     }
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-            final Contact contact = new Contact(123456, "+7 (111) 111-11-11");
-            File tempfile = Files.createTempFile(null, null).toFile();
-            try (FileOutputStream fos = new FileOutputStream(tempfile);
-            ObjectOutputStream oos =
-                    new ObjectOutputStream(fos)) {
-                oos.writeObject(contact);
-            }
-            try (FileInputStream fis = new FileInputStream(tempfile);
-            ObjectInputStream ois =
-                    new ObjectInputStream(fis)) {
-                final Contact contactFromFile = (Contact) ois.readObject();
-                System.out.println(contactFromFile);
-            }
+        final Contact contact = new Contact(123456, "+7 (111) 111-11-11");
+        File tempfile = Files.createTempFile(null, null).toFile();
+        try (FileOutputStream fos = new FileOutputStream(tempfile);
+             ObjectOutputStream oos =
+                     new ObjectOutputStream(fos)) {
+            oos.writeObject(contact);
+        }
+        try (FileInputStream fis = new FileInputStream(tempfile);
+             ObjectInputStream ois =
+                     new ObjectInputStream(fis)) {
+            final Contact contactFromFile = (Contact) ois.readObject();
+            System.out.println(contactFromFile);
         }
     }
+}
 
