@@ -1,0 +1,12 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<car>
+    <accident>false</accident>
+    <kilometres>15000</kilometres>
+    <model>Toyota</model>
+    <owner name="Petrov"/>
+    <descriptions>
+        <description>white</description>
+        <description>economy</description>
+    </descriptions>
+</car>
+    
