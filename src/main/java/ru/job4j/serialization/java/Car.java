@@ -3,6 +3,7 @@ package ru.job4j.serialization.java;
 import java.util.Arrays;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.json.JSONObject;
 
 public class Car {
     private final boolean accident;
@@ -17,6 +18,26 @@ public class Car {
         this.model = model;
         this.owner = owner;
         this.description = description;
+    }
+
+    public boolean isAccident() {
+        return accident;
+    }
+
+    public int getKilometres() {
+        return kilometres;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public String[] getDescription() {
+        return description;
     }
 
     @Override
@@ -36,17 +57,27 @@ public class Car {
         System.out.println(gson.toJson(car));
         final String carJson =
                 "{"
-                + "\"accident\":false,"
-                + "\"kilometres\":25000,"
-                + "\"model\":Nissan,"
-                + "\"owner\":"
-                + "{"
+                        + "\"accident\":false,"
+                        + "\"kilometres\":25000,"
+                        + "\"model\":Nissan,"
+                        + "\"owner\":"
+                        + "{"
                         + "\"name\":Petrov"
-                + "},"
-                + "\"description\":"
-                + "[\"black\",\"business\"]"
-                + "}";
+                        + "},"
+                        + "\"description\":"
+                        + "[\"black\",\"business\"]"
+                        + "}";
         final Car carFromJ = gson.fromJson(carJson, Car.class);
         System.out.println(carFromJ);
+        System.out.println();
+        JSONObject jsonOwner = new JSONObject("{\"name\":\"Petrov\"}");
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("accident", car.isAccident());
+        jsonObject.put("kilometres", car.getKilometres());
+        jsonObject.put("model", car.getModel());
+        jsonObject.put("owner", jsonOwner);
+        jsonObject.put("description", car.getDescription());
+        System.out.println(jsonObject);
+        System.out.println(new JSONObject(car));
     }
 }
