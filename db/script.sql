@@ -5,6 +5,6 @@ create table status_delivery (
     delivered boolean
 );
 insert into status_delivery(description, quantity, delivered)
-values ('Valves', '5', true);
-update status_delivery set quantity = '4';
+values ('Valves', 5, true);
+update status_delivery set quantity = 4;
 delete from status_delivery;
