@@ -15,3 +15,10 @@ insert into fauna(name, avr_age, discovery_date)
 values ('elephant', 60, date '1912-05-01');
 insert into fauna(name, avr_age, discovery_date)
 values ('wolf', 6, date '1500-04-01');
+insert into fauna(name, avr_age, discovery_date)
+values ('fish', 10, date '1812-01-01');
+insert into fauna(name, avr_age, discovery_date)
+values ('crocodile', 50, null);
+insert into fauna(name, avr_age, discovery_date)
+values ('giraffe', 10, date '1957-01-01');
+
