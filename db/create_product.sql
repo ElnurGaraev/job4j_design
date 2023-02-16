@@ -35,8 +35,9 @@ where p.name like 'Мороженное%' or p.name like '%мороженное'
 select * from product p join type t
 on p.type_id = t.id where expired_date<current_date;
 
-select name, max(price) from product
-group by name;
+select t.name, max(p.price)
+from product p join type t on p.type_id = t.id
+group by t.name;;
 
 select t.name, count(p.type_id)
 from product p join type t on p.type_id = t.id
@@ -48,5 +49,8 @@ where t.name = 'СЫР' or t.name = 'МОЛОКО';
 select t.name, count(p.type_id)
 from product p join type t on p.type_id = t.id
 group by t.name having count(p.type_id) < 10;
+
+select p.name as "Наименование продукта", t.name "Тип продукта"
+from product p join type t on p.type_id = t.id;
 
 
