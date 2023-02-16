@@ -15,7 +15,8 @@ insert into type(name) values ('СЫР'), ('МОЛОКО'), ('МОРОЖЕНОЕ
 ('КОЛБАСА'), ('ШОКОЛАД');
 
 insert into product(name, type_id, expired_date, price)
-values ('Сыр плавленный', 1, '2023-04-01', 200), ('Сыр моцарелла', 1, '2023-03-01', 250), ('Сыр голландский', 1, '2023-01-01', 240),
+values ('Сыр плавленный', 1, '2023-04-01', 200), ('Сыр моцарелла', 1, '2023-03-01', 250),
+('Сыр голландский', 1, '2023-01-01', 240), ('Сыр плавленный', 1, '2023-04-01', 300),
 ('Молоко буренка', 2, '2023-03-05', 60), ('Молоко деревенское', 2, '2023-03-03', 62), ('Молоко ставропольское', 2, '2023-02-01', 65),
 ('Мороженное коровка', 3, '2023-03-10', 45), ('Мороженное максим', 3, '2023-05-10', 75), ('Мороженное золотой стандарт', 3, '2023-04-20', 84), 
 ('Мороженное пломбир', 3, '2023-05-01', 50), ('Мороженное шоколадное', 3, '2023-01-25', 50),
@@ -35,9 +36,7 @@ where p.name like 'Мороженное%' or p.name like '%мороженное'
 select * from product p join type t
 on p.type_id = t.id where expired_date<current_date;
 
-select t.name, max(p.price)
-from product p join type t on p.type_id = t.id
-group by t.name;;
+select * from product where price = (select max(price) from product);
 
 select t.name, count(p.type_id)
 from product p join type t on p.type_id = t.id
