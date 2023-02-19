@@ -12,7 +12,8 @@ RETURNS TRIGGER AS
 $$
 BEGIN
 	UPDATE products
-	SET price = price + price * 0.2;
+	SET price = price + price * 0.2
+	WHERE ID = (SELECT ID FROM inserted);
 	RETURN NEW;
 END;
 $$
@@ -33,7 +34,7 @@ $$
 		RETURN NEW;
 	END;
 $$
-LANGUAGE 'plpgsql'
+LANGUAGE 'plpgsql';
 
 CREATE TRIGGER tax_trigger_b
 BEFORE INSERT
