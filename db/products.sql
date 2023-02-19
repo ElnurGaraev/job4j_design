@@ -25,8 +25,19 @@ FOR EACH STATEMENT
 EXECUTE PROCEDURE tax();
 
 ----point 2.2
+CREATE OR REPLACE FUNCTION tax_before_insert()
+	RETURNS TRIGGER AS
+$$
+	BEGIN
+	 NEW.price = NEW.price + NEW.price*0.2;
+		RETURN NEW;
+	END;
+$$
+LANGUAGE 'plpgsql'
+
 CREATE TRIGGER tax_trigger_b
 BEFORE INSERT
-ON PRODUCTS
+ON products
 FOR EACH ROW
-EXECUTE PROCEDURE tax();
+EXECUTE PROCEDURE tax_before_insert();
+
