@@ -28,18 +28,20 @@ public class ImportDB {
                 new FileReader(dump))) {
             while ((line = rd.readLine()) != null) {
                 String[] rsl = line.split(";", 2);
-                if (rsl[0] != null && rsl[1] != null) {
-                    System.out.println(rsl[0]);
-                    System.out.println(rsl[1]);
-                    users.add(new User(rsl[0], rsl[1]
-                    ));
-                } else {
-                    throw new IllegalArgumentException();
-                }
+                checkLine(rsl);
+                users.add(new User(rsl[0], rsl[1]
+                ));
             }
+            return users;
         }
-        return users;
     }
+
+    private void checkLine(String[] array) {
+        if (array[0].isEmpty() && array[1].isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 
     public void save(List<User> users) throws  Exception {
         Class.forName(cfg.getProperty("jdbc.driver"));
