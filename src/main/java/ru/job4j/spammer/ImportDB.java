@@ -37,7 +37,7 @@ public class ImportDB {
     }
 
     private void checkLine(String[] array) {
-        if (array[0].isEmpty() && array[1].isEmpty()) {
+        if (array.length != 2 && array[0].isEmpty() && array[1].isEmpty()) {
             throw new IllegalArgumentException();
         }
     }
