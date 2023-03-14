@@ -46,6 +46,15 @@ class GeneratorTest {
     }
 
     @Test
+    public void whenKeysInTheMapNotMatchedWithPatternKeys() {
+        GeneratorGreeting generator = new GeneratorGreeting();
+        assertThatThrownBy(
+                () -> generator.produce(new String(), new HashMap<>()))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Ключи в карте не совпадают с ключами в шаблоне.");
+    }
+
+    @Test
     public void whenGetPattern() {
         GeneratorGreeting generator = new GeneratorGreeting();
         String rsl = generator.produce(new String(), new HashMap<>());
