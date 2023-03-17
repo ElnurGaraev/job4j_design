@@ -21,18 +21,18 @@ class ReportEngineTestAccount {
         Calendar now = Calendar.getInstance();
         DateTimeParser<Calendar> parse = new ReportDateTimeParser();
         CurrencyConverter converterToUSD = new InMemoryCurrencyConverter();
-        Employee em = new Employee("Ivan", now, now,
-                converterToUSD.convert(Currency.RUB, 200, Currency.USD));
+        Employee em = new Employee("Ivan", now, now, 200);
         store.add(em);
-        Report engine = new ReportEngine(store, parse);
+        double usd = converterToUSD.convert(Currency.RUB, em.getSalary(), Currency.USD);
+        ReportEngine engine = new ReportEngine(store, parse);
         StringBuilder expected = new StringBuilder()
                 .append("Name; Hired; Fired; Salary;")
                 .append(System.lineSeparator())
                 .append(em.getName()).append(" ")
                 .append(parse.parse(em.getHired())).append(" ")
                 .append(parse.parse(em.getFired())).append(" ")
-                .append(em.getSalary())
+                .append(usd)
                 .append(System.lineSeparator());
-        assertThat(engine.generate(e -> true)).isEqualTo(expected.toString());
+        assertThat(engine.generateAccount(e -> true)).isEqualTo(expected.toString());
     }
 }
