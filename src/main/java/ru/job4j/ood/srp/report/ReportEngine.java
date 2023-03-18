@@ -10,6 +10,7 @@ import ru.job4j.ood.srp.store.Store;
 
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -55,7 +56,8 @@ public class ReportEngine implements Report {
     public String generateHR(Predicate<Employee> filter) {
         StringBuilder text = new StringBuilder();
         List<Employee> lists = store.findBy(filter);
-        Collections.sort(lists, Collections.reverseOrder());
+        Comparator<Employee> comparator = (o1, o2) -> Double.compare(o1.getSalary(), o2.getSalary());
+        Collections.sort(lists, comparator.reversed());
         text.append("Name; Salary;")
                 .append(System.lineSeparator());
         for (Employee employee : lists) {
