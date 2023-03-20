@@ -1,12 +1,20 @@
 package ru.job4j.ood.lsp;
 
 public class Shop extends AbstractStore {
+    DateControl dateControl = new DateControl();
+
+    public Shop() {
+        this.dateControl = dateControl;
+    }
+
     @Override
     public boolean isFresh(Food food) {
         boolean rsl = false;
-        if (spendDate(food) >= 25 && spendDate(food) <= 75) {
+        if (dateControl.spendDate(food.getCreateDate(), food.getExpiryDate()) >= 25
+                && dateControl.spendDate(food.getCreateDate(), food.getExpiryDate()) <= 75) {
             rsl = true;
-        } else if (spendDate(food) < 25) {
+        } else if (dateControl.spendDate(food.getCreateDate(), food.getExpiryDate()) < 25
+                && dateControl.spendDate(food.getCreateDate(), food.getExpiryDate()) > 0) {
             food.setDiscount(0.5F);
             rsl = true;
         }

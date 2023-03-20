@@ -13,13 +13,6 @@ public abstract class AbstractStore implements Store {
         this.foodList = foodList;
     }
 
-    public float spendDate(Food food) {
-        long remainDays = DAYS.between(LocalDate.now(), food.getExpiryDate());
-        long totalDays = DAYS.between(food.getCreateDate(), food.getExpiryDate());
-        float remainPercent = ((float) remainDays / (float) totalDays) * 100;
-        return remainPercent;
-    }
-
     @Override
     public boolean put(Food food) {
         boolean rsl = true;

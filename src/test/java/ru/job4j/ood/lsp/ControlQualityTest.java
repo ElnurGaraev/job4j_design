@@ -42,7 +42,7 @@ class ControlQualityTest {
 
     @Test
     public void whenPutFoodToWarehouse() {
-        Food food = new Food("Apple", LocalDate.of(2023, 03, 28),
+        Food food = new Food("Apple", LocalDate.of(2023, 04, 10),
                 LocalDate.of(2023, 03, 18), 15, 0);
         ControlQuality controlQuality = new ControlQuality();
         Store shop = new Shop();
@@ -58,7 +58,7 @@ class ControlQualityTest {
 
     @Test
     public void whenPutToTrash() {
-        Food food = new Food("Apple", LocalDate.of(2023, 03, 19),
+        Food food = new Food("Apple", LocalDate.of(2023, 03, 20),
                 LocalDate.of(2023, 03, 03), 15, 0);
         ControlQuality controlQuality = new ControlQuality();
         Store shop = new Shop();
@@ -67,7 +67,8 @@ class ControlQualityTest {
         controlQuality.setStore(shop);
         controlQuality.setStore(trash);
         controlQuality.setStore(warehouse);
-        boolean rsl = controlQuality.checkProduct(food);
-        assertThat(rsl).isTrue();
+        controlQuality.checkProduct(food);
+        List<Food> exp = List.of(food);
+        assertThat(trash.get()).isEqualTo(exp);
     }
 }
