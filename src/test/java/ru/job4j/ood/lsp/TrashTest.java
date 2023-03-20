@@ -13,9 +13,9 @@ class TrashTest {
     public void whenPutFoodToTrash() {
         Food food = new Food("Apple", LocalDate.of(2023, 03, 19),
                 LocalDate.of(2023, 03, 03), 15, 0);
-        Trash trash = new Trash();
+        Store trash = new Trash();
         trash.put(food);
         List<Food> exp = List.of(food);
-        assertThat(trash.getTrashList()).isEqualTo(exp);
+        assertThat(trash.get()).isEqualTo(exp);
     }
 }

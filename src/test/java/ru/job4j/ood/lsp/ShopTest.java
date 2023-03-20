@@ -12,19 +12,19 @@ class ShopTest {
     public void whenPutFoodToShop() {
         Food food = new Food("Apple", LocalDate.of(2023, 04, 19),
                 LocalDate.of(2023, 03, 03), 15, 0);
-        Shop shop = new Shop();
+        Store shop = new Shop();
         shop.put(food);
         List<Food> exp = List.of(food);
-        assertThat(shop.getShopFoods()).isEqualTo(exp);
+        assertThat(shop.get()).isEqualTo(exp);
     }
 
     @Test
     public void whenPutFoodWithDiscount() {
         Food food = new Food("Apple", LocalDate.of(2023, 03, 22),
                 LocalDate.of(2023, 03, 03), 15, 0);
-        Shop shop = new Shop();
+        Store shop = new Shop();
         shop.put(food);
-        List<Food> foodList = shop.getShopFoods();
+        List<Food> foodList = shop.get();
         float price = foodList.get(0).getPrice();
         assertThat(price).isEqualTo(7.5F);
     }

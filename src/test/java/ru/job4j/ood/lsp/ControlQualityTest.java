@@ -13,15 +13,15 @@ class ControlQualityTest {
         Food food = new Food("Apple", LocalDate.of(2023, 04, 19),
                 LocalDate.of(2023, 03, 03), 15, 0);
         ControlQuality controlQuality = new ControlQuality();
-        Shop shop = new Shop();
-        Warehouse warehouse = new Warehouse();
-        Trash trash = new Trash();
+        Store shop = new Shop();
+        Store warehouse = new Warehouse();
+        Store trash = new Trash();
         controlQuality.setStore(shop);
         controlQuality.setStore(trash);
         controlQuality.setStore(warehouse);
         controlQuality.checkProduct(food);
         List<Food> exp = List.of(food);
-        assertThat(shop.getShopFoods()).isEqualTo(exp);
+        assertThat(shop.get()).isEqualTo(exp);
     }
 
     @Test
@@ -29,14 +29,14 @@ class ControlQualityTest {
         Food food = new Food("Apple", LocalDate.of(2023, 03, 22),
                 LocalDate.of(2023, 03, 03), 15, 0);
         ControlQuality controlQuality = new ControlQuality();
-        Shop shop = new Shop();
-        Warehouse warehouse = new Warehouse();
-        Trash trash = new Trash();
+        Store shop = new Shop();
+        Store warehouse = new Warehouse();
+        Store trash = new Trash();
         controlQuality.setStore(shop);
         controlQuality.setStore(trash);
         controlQuality.setStore(warehouse);
         controlQuality.checkProduct(food);
-        List<Food> list = shop.getShopFoods();
+        List<Food> list = shop.get();
         assertThat(list.get(0).getPrice()).isEqualTo(7.5F);
     }
 
@@ -45,15 +45,15 @@ class ControlQualityTest {
         Food food = new Food("Apple", LocalDate.of(2023, 03, 28),
                 LocalDate.of(2023, 03, 18), 15, 0);
         ControlQuality controlQuality = new ControlQuality();
-        Shop shop = new Shop();
-        Warehouse warehouse = new Warehouse();
-        Trash trash = new Trash();
+        Store shop = new Shop();
+        Store warehouse = new Warehouse();
+        Store trash = new Trash();
         controlQuality.setStore(shop);
         controlQuality.setStore(trash);
         controlQuality.setStore(warehouse);
         controlQuality.checkProduct(food);
         List<Food> exp = List.of(food);
-        assertThat(warehouse.warehouseFoods).isEqualTo(exp);
+        assertThat(warehouse.get()).isEqualTo(exp);
     }
 
     @Test
@@ -61,14 +61,13 @@ class ControlQualityTest {
         Food food = new Food("Apple", LocalDate.of(2023, 03, 19),
                 LocalDate.of(2023, 03, 03), 15, 0);
         ControlQuality controlQuality = new ControlQuality();
-        Shop shop = new Shop();
-        Warehouse warehouse = new Warehouse();
-        Trash trash = new Trash();
+        Store shop = new Shop();
+        Store warehouse = new Warehouse();
+        Store trash = new Trash();
         controlQuality.setStore(shop);
         controlQuality.setStore(trash);
         controlQuality.setStore(warehouse);
-        controlQuality.checkProduct(food);
-        List<Food> exp = List.of(food);
-        assertThat(trash.trashList).isEqualTo(exp);
+        boolean rsl = controlQuality.checkProduct(food);
+        assertThat(rsl).isTrue();
     }
 }

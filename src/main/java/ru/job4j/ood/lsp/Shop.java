@@ -1,26 +1,15 @@
 package ru.job4j.ood.lsp;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Shop extends AbstractStore {
-    List<Food> shopFoods = new ArrayList<>();
-
-    public Shop() {
-        this.shopFoods = shopFoods;
-    }
-
     @Override
-    public void put(Food food) {
+    public boolean isFresh(Food food) {
+        boolean rsl = false;
         if (spendDate(food) >= 25 && spendDate(food) <= 75) {
-            shopFoods.add(food);
+            rsl = true;
         } else if (spendDate(food) < 25) {
             food.setDiscount(0.5F);
-            shopFoods.add(food);
+            rsl = true;
         }
-    }
-
-    public List<Food> getShopFoods() {
-        return shopFoods;
+        return rsl;
     }
 }
