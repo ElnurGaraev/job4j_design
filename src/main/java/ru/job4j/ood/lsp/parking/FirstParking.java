@@ -8,12 +8,24 @@ public class FirstParking implements Parking {
     private int totalPlaces = 10;
     private int countFreePlaces;
 
-    public FirstParking() {
-        this.cars = cars;
+
+    @Override
+    public boolean add(List<Car> cars) {
+        return false;
     }
 
     @Override
-    public boolean add(Car car) {
+    public int getSizeCar(Car car) {
+        return 0;
+    }
+
+    @Override
+    public boolean getStatusCar(Car car) {
+        return false;
+    }
+
+    @Override
+    public boolean inform(Car car) {
         return false;
     }
 }
