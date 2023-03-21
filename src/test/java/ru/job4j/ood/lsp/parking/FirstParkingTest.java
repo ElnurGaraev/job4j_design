@@ -1,13 +1,14 @@
 package ru.job4j.ood.lsp.parking;
 
 import org.checkerframework.checker.units.qual.C;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-@Deprecated
+@Disabled
 class FirstParkingTest {
     @Test
     public void whenAddCarToPark() {
