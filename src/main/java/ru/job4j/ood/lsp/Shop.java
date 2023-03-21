@@ -1,23 +1,32 @@
 package ru.job4j.ood.lsp;
 
-public class Shop extends AbstractStore {
-    DateControl dateControl = new DateControl();
+import java.time.LocalDate;
 
-    public Shop() {
-        this.dateControl = dateControl;
+public class Shop extends AbstractStore {
+    DateControl calculatorDate = new DateControl();
+    LocalDate controlDate;
+
+    public Shop(LocalDate controlDate) {
+        this.calculatorDate = calculatorDate;
+        this.controlDate = controlDate;
     }
 
     @Override
     public boolean isFresh(Food food) {
         boolean rsl = false;
-        if (dateControl.spendDate(food.getCreateDate(), food.getExpiryDate()) >= 25
-                && dateControl.spendDate(food.getCreateDate(), food.getExpiryDate()) <= 75) {
+        if (calculatorDate.spendDate(food.getCreateDate(), food.getExpiryDate(), controlDate) >= 25
+                && calculatorDate.spendDate(food.getCreateDate(), food.getExpiryDate(), controlDate) <= 75) {
             rsl = true;
-        } else if (dateControl.spendDate(food.getCreateDate(), food.getExpiryDate()) < 25
-                && dateControl.spendDate(food.getCreateDate(), food.getExpiryDate()) > 0) {
+        } else if (calculatorDate.spendDate(food.getCreateDate(), food.getExpiryDate(), controlDate) < 25
+                && calculatorDate.spendDate(food.getCreateDate(), food.getExpiryDate(), controlDate) > 0) {
             food.setDiscount(0.5F);
             rsl = true;
         }
         return rsl;
+    }
+
+    @Override
+    public void setDateControl(LocalDate dateControl) {
+        this.controlDate = dateControl;
     }
 }

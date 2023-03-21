@@ -8,6 +8,7 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 public abstract class AbstractStore implements Store {
     private List<Food> foodList = new ArrayList<>();
+    private LocalDate controlDate;
 
     public AbstractStore() {
         this.foodList = foodList;
@@ -27,6 +28,11 @@ public abstract class AbstractStore implements Store {
     @Override
     public List<Food> get() {
         return foodList;
+    }
+
+    @Override
+    public void setDateControl(LocalDate dateControl) {
+        this.controlDate = dateControl;
     }
 
     public abstract boolean isFresh(Food food);

@@ -10,9 +10,9 @@ import static org.assertj.core.api.Assertions.*;
 class ShopTest {
     @Test
     public void whenPutFoodToShop() {
+        Store shop = new Shop(LocalDate.of(2023, 03, 21));
         Food food = new Food("Apple", LocalDate.of(2023, 04, 19),
                 LocalDate.of(2023, 03, 03), 15, 0);
-        Store shop = new Shop();
         shop.put(food);
         List<Food> exp = List.of(food);
         assertThat(shop.get()).isEqualTo(exp);
@@ -20,9 +20,9 @@ class ShopTest {
 
     @Test
     public void whenPutFoodWithDiscount() {
+        Store shop = new Shop(LocalDate.of(2023, 03, 21));
         Food food = new Food("Apple", LocalDate.of(2023, 03, 22),
                 LocalDate.of(2023, 03, 03), 15, 0);
-        Store shop = new Shop();
         shop.put(food);
         List<Food> foodList = shop.get();
         float price = foodList.get(0).getPrice();

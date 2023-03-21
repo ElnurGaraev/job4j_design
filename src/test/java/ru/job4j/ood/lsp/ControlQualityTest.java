@@ -13,9 +13,9 @@ class ControlQualityTest {
         Food food = new Food("Apple", LocalDate.of(2023, 04, 19),
                 LocalDate.of(2023, 03, 03), 15, 0);
         ControlQuality controlQuality = new ControlQuality();
-        Store shop = new Shop();
-        Store warehouse = new Warehouse();
-        Store trash = new Trash();
+        Store shop = new Shop(LocalDate.of(2023, 03, 21));
+        Store warehouse = new Warehouse(LocalDate.of(2023, 03, 21));
+        Store trash = new Trash(LocalDate.of(2023, 03, 21));
         controlQuality.setStore(shop);
         controlQuality.setStore(trash);
         controlQuality.setStore(warehouse);
@@ -29,9 +29,9 @@ class ControlQualityTest {
         Food food = new Food("Apple", LocalDate.of(2023, 03, 22),
                 LocalDate.of(2023, 03, 03), 15, 0);
         ControlQuality controlQuality = new ControlQuality();
-        Store shop = new Shop();
-        Store warehouse = new Warehouse();
-        Store trash = new Trash();
+        Store shop = new Shop(LocalDate.of(2023, 03, 21));
+        Store warehouse = new Warehouse(LocalDate.of(2023, 03, 21));
+        Store trash = new Trash(LocalDate.of(2023, 03, 21));
         controlQuality.setStore(shop);
         controlQuality.setStore(trash);
         controlQuality.setStore(warehouse);
@@ -45,9 +45,9 @@ class ControlQualityTest {
         Food food = new Food("Apple", LocalDate.of(2023, 04, 10),
                 LocalDate.of(2023, 03, 18), 15, 0);
         ControlQuality controlQuality = new ControlQuality();
-        Store shop = new Shop();
-        Store warehouse = new Warehouse();
-        Store trash = new Trash();
+        Store shop = new Shop(LocalDate.of(2023, 03, 21));
+        Store warehouse = new Warehouse(LocalDate.of(2023, 03, 21));
+        Store trash = new Trash(LocalDate.of(2023, 03, 21));
         controlQuality.setStore(shop);
         controlQuality.setStore(trash);
         controlQuality.setStore(warehouse);
@@ -61,9 +61,9 @@ class ControlQualityTest {
         Food food = new Food("Apple", LocalDate.of(2023, 03, 20),
                 LocalDate.of(2023, 03, 03), 15, 0);
         ControlQuality controlQuality = new ControlQuality();
-        Store shop = new Shop();
-        Store warehouse = new Warehouse();
-        Store trash = new Trash();
+        Store shop = new Shop(LocalDate.of(2023, 03, 21));
+        Store warehouse = new Warehouse(LocalDate.of(2023, 03, 21));
+        Store trash = new Trash(LocalDate.of(2023, 03, 21));
         controlQuality.setStore(shop);
         controlQuality.setStore(trash);
         controlQuality.setStore(warehouse);

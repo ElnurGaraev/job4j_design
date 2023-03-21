@@ -26,15 +26,4 @@ public class ControlQuality {
         }
         return rsl;
     }
-
-    public static void main(String[] args) {
-        Food food = new Food("Apple", LocalDate.of(2023, 03, 22),
-                LocalDate.of(2023, 03, 03), 15, 0);
-        ControlQuality controlQuality = new ControlQuality();
-        Store shop = new Shop();
-        controlQuality.setStore(shop);
-        controlQuality.checkProduct(food);
-        System.out.println(shop.get().get(0).getPrice() + shop.get().get(0).getName());
-
-    }
 }
