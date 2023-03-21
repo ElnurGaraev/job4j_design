@@ -5,7 +5,7 @@ import java.util.List;
 
 public class FirstParking implements Parking {
     private List<Car> cars = new ArrayList<>();
-    private int totalPlaces = 10;
+    private int totalPlaces = 4;
     private int countFreePlaces;
 
 

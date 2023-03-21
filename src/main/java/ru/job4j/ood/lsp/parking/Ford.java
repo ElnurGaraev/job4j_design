@@ -1,13 +1,11 @@
 package ru.job4j.ood.lsp.parking;
 
-import java.util.List;
-
-public class Toyota implements Car {
+public class Ford implements Car {
     private String name;
     private int size;
     private boolean status;
 
-    public Toyota(String name, int size, boolean status) {
+    public Ford(String name, int size, boolean status) {
         this.name = name;
         this.size = size;
         this.status = status;
@@ -32,7 +30,3 @@ public class Toyota implements Car {
         return name;
     }
 }
-
-
-
-
