@@ -5,11 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControlQuality {
-    List<Store> stores = new ArrayList<>();
-
-    public ControlQuality() {
-        this.stores = stores;
-    }
+    private List<Store> stores = new ArrayList<>();
 
     public void setStore(Store store) {
         stores.add(store);

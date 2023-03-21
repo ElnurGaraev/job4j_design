@@ -10,10 +10,6 @@ public abstract class AbstractStore implements Store {
     private List<Food> foodList = new ArrayList<>();
     private LocalDate controlDate;
 
-    public AbstractStore() {
-        this.foodList = foodList;
-    }
-
     @Override
     public boolean put(Food food) {
         boolean rsl = true;

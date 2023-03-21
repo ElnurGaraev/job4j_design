@@ -3,11 +3,10 @@ package ru.job4j.ood.lsp;
 import java.time.LocalDate;
 
 public class Trash extends AbstractStore {
-    DateControl dateControl = new DateControl();
-    LocalDate controlDate;
+    private DateControl dateControl = new DateControl();
+    private LocalDate controlDate;
 
     public Trash(LocalDate controlDate) {
-        this.dateControl = dateControl;
         this.controlDate = controlDate;
     }
 

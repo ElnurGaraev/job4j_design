@@ -3,11 +3,10 @@ package ru.job4j.ood.lsp;
 import java.time.LocalDate;
 
 public class Shop extends AbstractStore {
-    DateControl calculatorDate = new DateControl();
-    LocalDate controlDate;
+    private DateControl calculatorDate = new DateControl();
+    private LocalDate controlDate;
 
     public Shop(LocalDate controlDate) {
-        this.calculatorDate = calculatorDate;
         this.controlDate = controlDate;
     }
 
