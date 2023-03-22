@@ -43,7 +43,7 @@ public class FirstParking implements Parking {
         if (car.getStatus(car)) {
             rsl = true;
         }
-        return false;
+        return rsl;
     }
 
     @Override
