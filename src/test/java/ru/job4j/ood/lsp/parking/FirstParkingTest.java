@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-@Disabled
+
 class FirstParkingTest {
     @Test
     public void whenAddCarToPark() {
@@ -40,8 +40,21 @@ class FirstParkingTest {
         Toyota toyota = new Toyota("Corolla", 1, false);
         List<Car> cars = List.of(toyota);
         FirstParking firstParking = new FirstParking();
-        firstParking.add(cars);
-        boolean rsl = firstParking.getStatusCar(toyota);
+        boolean rsl = firstParking.add(cars);
         assertThat(rsl).isTrue();
+    }
+
+    @Test
+    public  void whenParkingIsFull() {
+        Ford ford = new Ford("F150", 2, false);
+        Ford ford2 = new Ford("F150", 2, false);
+        List<Car> cars = List.of(ford, ford2);
+        FirstParking firstParking = new FirstParking();
+        boolean rsl = firstParking.add(cars);
+        assertThat(rsl).isTrue();
+        Toyota toyota = new Toyota("Corolla", 1, false);
+        List<Car> car = List.of(toyota);
+        rsl = firstParking.add(car);
+        assertThat(rsl).isFalse();
     }
 }

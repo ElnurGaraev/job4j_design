@@ -15,20 +15,29 @@ public class Toyota implements Car {
 
     @Override
     public int getSize(Car car) {
-        return 0;
+        return size;
     }
 
     @Override
     public boolean getStatus(Car car) {
-        return false;
+        return status;
     }
 
     @Override
-    public boolean changeStatus(boolean parkStatus) {
-        return false;
+    public boolean changeStatus(Car car) {
+        boolean rsl = false;
+        if (!status) {
+            this.status = true;
+            rsl = true;
+        } else if (status) {
+            this.status = false;
+            rsl = false;
+        }
+        return rsl;
     }
 
-    public String getName() {
+    @Override
+    public String getName(Car car) {
         return name;
     }
 }
