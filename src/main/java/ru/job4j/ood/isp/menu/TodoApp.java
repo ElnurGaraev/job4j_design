@@ -1,5 +1,6 @@
 package ru.job4j.ood.isp.menu;
 
+import java.util.Optional;
 import java.util.Scanner;
 
 public class TodoApp {
@@ -16,6 +17,7 @@ public class TodoApp {
     public static final int CREATE_MENU_ITEM = 1;
     public static final int CREATE_MENU_SUB_ITEM = 2;
     public static final int SHOW_MENU = 3;
+    public static final int MAKE_MENU_ACT = 4;
     public static final String INPUT_ITEM = "Введите название пункта";
     public static final String INPUT_SUB_ITEM = "Введите название подпункта";
     public static final String MENU = """
@@ -23,6 +25,7 @@ public class TodoApp {
                 Введите 1 для добавления пункта меню.
                 Введите 2 для добавления подпункта меню.
                 Введите 3, чтобы показать меню.
+                Введиту 4, чтобы выполнить действия меню.
                 Введите любое другое число для выхода.
             """;
     public static void main(String[] args) {
@@ -46,6 +49,11 @@ public class TodoApp {
                 todoApp.menu.add(parent, children, ACTION);
             } else if (point == SHOW_MENU) {
                 print.print(todoApp.menu);
+            } else if (point == MAKE_MENU_ACT) {
+                System.out.println("Введите пункт меню, который необходимо выполнить.");
+                String menuItem = todoApp.scanner.nextLine();
+                Optional<Menu.MenuItemInfo> info = todoApp.menu.select(menuItem);
+                System.out.println("Печатаю текст по требованию меню" + " " + info.get().getName());
             } else {
                 run = false;
                 System.out.println("Выход из приложения.");

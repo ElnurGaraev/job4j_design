@@ -10,7 +10,7 @@ public class PrintConsoleMenu implements MenuPrinter {
         int number = 0;
         for (Menu.MenuItemInfo item : menu) {
             number = item.getNumber().split("\\.").length - 1;
-            System.out.println(lines.repeat(number) + item.getName() + " " + item.getNumber());
+            System.out.println(lines.repeat(number) + item.getNumber() + " " + item.getName());
         }
     }
 
