@@ -22,4 +22,10 @@ public class ControlQuality {
         }
         return rsl;
     }
+
+    public void resort() {
+        for (Store store : stores) {
+            store.get().stream().forEach(g -> new ControlQuality().checkProduct(g));
+        }
+    }
 }

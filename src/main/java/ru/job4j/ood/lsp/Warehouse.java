@@ -15,10 +15,6 @@ public class Warehouse extends AbstractStore {
         return dateControl.spendDate(food.getCreateDate(), food.getExpiryDate(), controlDate) >= 75;
     }
 
-    public LocalDate setDataControl(LocalDate controlDate) {
-        return controlDate;
-    }
-
     @Override
     public void setDateControl(LocalDate dateControl) {
         this.controlDate = dateControl;
