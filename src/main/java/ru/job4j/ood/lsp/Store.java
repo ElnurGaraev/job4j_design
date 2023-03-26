@@ -7,4 +7,5 @@ public interface Store {
     boolean put(Food food);
     List<Food> get();
    void setDateControl(LocalDate dateControl);
+    public void clearList();
 }

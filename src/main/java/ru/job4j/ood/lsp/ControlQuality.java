@@ -3,6 +3,7 @@ package ru.job4j.ood.lsp;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ControlQuality {
     private List<Store> stores = new ArrayList<>();
@@ -23,9 +24,13 @@ public class ControlQuality {
         return rsl;
     }
 
-    public void resort() {
+    public void resort(LocalDate dateControl) {
+        List<Food> tempList = new ArrayList<>();
         for (Store store : stores) {
-            store.get().stream().forEach(g -> new ControlQuality().checkProduct(g));
+            tempList.addAll(store.get());
+            store.clearList();
+            store.setDateControl(dateControl);
         }
+        tempList.stream().forEach(g -> checkProduct(g));
     }
 }

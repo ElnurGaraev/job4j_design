@@ -71,4 +71,29 @@ class ControlQualityTest {
         List<Food> exp = List.of(food);
         assertThat(trash.get()).isEqualTo(exp);
     }
+
+    @Test
+    public void whenAddToStoreAndThenRestore() {
+        Food apple = new Food("Apple", LocalDate.of(2023, 03, 30),
+                LocalDate.of(2023, 03, 03), 15, 0);
+        Food milk = new Food("Milk", LocalDate.of(2023, 03, 25),
+                LocalDate.of(2023, 03, 10), 15, 0);
+        Food orange = new Food("Orange", LocalDate.of(2023, 03, 27),
+                LocalDate.of(2023, 03, 01), 15, 0);
+        Store shop = new Shop(LocalDate.of(2023, 03, 26));
+        Store warehouse = new Warehouse(LocalDate.of(2023, 03, 26));
+        Store trash = new Trash(LocalDate.of(2023, 03, 26));
+        ControlQuality controlQuality = new ControlQuality();
+        controlQuality.setStore(shop);
+        controlQuality.setStore(warehouse);
+        controlQuality.setStore(trash);
+        controlQuality.checkProduct(apple);
+        controlQuality.checkProduct(milk);
+        controlQuality.checkProduct(orange);
+        assertThat(trash.get()).isEqualTo(List.of(milk));
+        assertThat(shop.get()).isEqualTo(List.of(apple, orange));
+        controlQuality.resort(LocalDate.of(2023, 03, 28));
+        assertThat(trash.get()).isEqualTo(List.of(orange, milk));
+        assertThat(shop.get()).isEqualTo(List.of(apple));
+    }
 }
